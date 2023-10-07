@@ -1,0 +1,20 @@
+{
+    "name": "slim/application",
+    "require": {
+        "php": ">=7.2",
+        "slim/slim": "^2.0",
+        "rain/raintpl": "3.0.0"
+    },
+    "authors": [
+        {
+            "name": "Luiz Fernando",
+            "email": "contato.luizfdeveloper@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "application\\": "vendor\\application\\classes"
+
+        }
+    }
+}
