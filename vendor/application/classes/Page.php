@@ -49,18 +49,18 @@ class Page {
      * Segundo parametro '$tpl_dir' é para o caminho do Diretório dos templates
     */
 
-    public function __construct($opts = array(), $tpl_dir = "views/"){
+    public function __construct($opts = array(), $tpl_dir = "./views/"){
 
         //*Mescla as opções passadas com as opções padrões
         $this->options = array_merge($this->defaults, $opts);
 
         //* Configuração do RainTpl
         //? O caminho para o diretorio 'views' e 'views-cache' pode mudar de windows para linux
-        //? Linux : views/ e ../views-cache
+        //? Linux : ./views/ e ./views-cache/
         //? Windows : views/ e ./views-cache
         $config = array(
             "tpl_dir"=> $tpl_dir,
-            "cache_dir"=> "../views-cache/",
+            "cache_dir"=> "./views-cache/",
             "debug"=>true
         );
 
@@ -74,14 +74,12 @@ class Page {
         $this->setData($this->options["data"]);
 
         //* Renderiza o cabeçalho, se a opção "header" estiver habilitada
-        if($this->options["header"] === true) {
-            $this->tpl->draw("header");
-        }
+        if($this->options["header"] == true) $this->tpl->draw("header");
 
         //* Renderiza a navbar se a opção "navbar" estiver habilitada
-        if($this->options["navbar"] === true){
-            $this->tpl->draw("navbar");
-        }   
+        if($this->options["navbar"] == true) $this->tpl->draw("navbar");
+            
+         
     
     }
 
@@ -116,15 +114,9 @@ class Page {
     public function __destruct(){
      
         //*Desenha o rodapé, se a opção "footer" estiver habilitada
-        if ($this->options['footer'] === true) $this->tpl->draw("footer");
+        if ($this->options['footer'] == true) $this->tpl->draw("footer");
 
         //*Renderiza os links de dependencias e javascript se a opção "footerConfig" estiver habilitada
-        if($this->options["footerConfig"] === true) $this->tpl->draw("footerConfig");
-    }
-
-
-    
-
-
-    
+        if($this->options["footerConfig"] == true) $this->tpl->draw("footerConfig");
+    }    
 }
